@@ -20,36 +20,26 @@
             <input type="button" class="input__btn" value="저장" />
         </div>
         <div class="todos"></div>
-        <button onclick="calculate()">calculate
     </body>
     <script type="module" src="index.js"></script>
     <script>
-        window.onload = function () {
-            if (window.Notification) {
-                Notification.requestPermission();
-            }
-        };
+        // 1. check permission
+        console.log(Notification.permission);
 
-        function calculate() {
-            setTimeout(function () {
-                notify();
-            }, 5000);
-        }
+        // 2. gain permission
+        Notification.requestPermission().then((result) => {
+            console.log(result);
+        });
 
-        function notify() {
-            if (Notification.permission !== "granted") {
-                alert("notification is disabled");
-            } else {
-                var notification = new Notification("Notification title", {
-                    icon:
-                        "http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png",
-                    body: "Notification text",
-                });
-
-                notification.onclick = function () {
-                    window.open("http://google.com");
-                };
-            }
+        // 3. get permission
+        if (!("Notification" in window)) {
+            console.log("지원하지 않는 브라우저입니다");
+        } else {
+            Notification.requestPermission().then((permission) => {
+                console.log(permission);
+                Notification.permission = permission;
+                new Notification("test");
+            });
         }
     </script>
 </html>
