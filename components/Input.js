@@ -38,8 +38,10 @@ const Input = function ({
 
         const hours = end - start;
 
-        const timeout = setTimeout(function () {
-            alert("TimesUp!");
+        const timeout = setTimeout(() => {
+            new Notification("times up!", {
+                body: this.state.todo.title,
+            });
         }, hours);
     };
 
