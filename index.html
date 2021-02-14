@@ -23,15 +23,6 @@
     </body>
     <script type="module" src="index.js"></script>
     <script>
-        // 1. check permission
-        console.log(Notification.permission);
-
-        // 2. gain permission
-        Notification.requestPermission().then((result) => {
-            console.log(result);
-        });
-
-        // 3. get permission
         if (!("Notification" in window)) {
             console.log("지원하지 않는 브라우저입니다");
         } else {
