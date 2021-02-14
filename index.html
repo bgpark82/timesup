@@ -20,6 +20,36 @@
             <input type="button" class="input__btn" value="저장" />
         </div>
         <div class="todos"></div>
+        <button onclick="calculate()">calculate
     </body>
     <script type="module" src="index.js"></script>
+    <script>
+        window.onload = function () {
+            if (window.Notification) {
+                Notification.requestPermission();
+            }
+        };
+
+        function calculate() {
+            setTimeout(function () {
+                notify();
+            }, 5000);
+        }
+
+        function notify() {
+            if (Notification.permission !== "granted") {
+                alert("notification is disabled");
+            } else {
+                var notification = new Notification("Notification title", {
+                    icon:
+                        "http://cdn.sstatic.net/stackexchange/img/logos/so/so-icon.png",
+                    body: "Notification text",
+                });
+
+                notification.onclick = function () {
+                    window.open("http://google.com");
+                };
+            }
+        }
+    </script>
 </html>
