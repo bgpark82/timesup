@@ -10,8 +10,7 @@ new (function () {
 
         this.todos = new Todos();
         this.input = new Input({
-            onChangeEnd: this.onChangeEnd,
-            onChangeStart: this.onChangeStart,
+            onChangeInput: this.onChangeInput,
             onChangeTitle: this.onChangeTitle,
             onClickSave: this.onClickSave,
         });
@@ -19,25 +18,16 @@ new (function () {
         this.$todos = document.querySelector(".todos");
     };
 
-    this.onChangeStart = (e) => {
+    this.onChangeInput = (e) => {
+        console.log(e.target.name);
         this.state = {
             ...this.state,
             todo: {
                 ...this.state.todo,
-                start: e.target.value,
+                [e.target.name]: e.target.value,
             },
         };
-        this.setState();
-    };
-
-    this.onChangeEnd = (e) => {
-        this.state = {
-            ...this.state,
-            todo: {
-                ...this.state.todo,
-                end: e.target.value,
-            },
-        };
+        console.log(this.state);
         this.setState();
     };
 
@@ -56,7 +46,6 @@ new (function () {
         this.state = {
             ...this.state,
             todos: [...this.state.todos, this.state.todo],
-            todo: {},
         };
         this.setState();
         this.render();

@@ -16,12 +16,80 @@
                 display: flex;
                 gap: 0.5rem;
             }
+            .input__end,
+            .input__start {
+                display: flex;
+            }
+            .input {
+                display: flex;
+            }
+            ::placeholder {
+                color: #adb5bd;
+                opacity: 1; /* Firefox */
+            }
+
+            input {
+                border: none;
+                margin: 0.125rem;
+                border-radius: 5px;
+                background: #f8f9fa;
+                padding: 0.25rem;
+                color: #333;
+            }
+            input:focus {
+                outline: 0;
+            }
+
+            .input__start__hour,
+            .input__start__minute,
+            .input__end__hour,
+            .input__end__minute {
+                width: 2vw;
+                text-align: center;
+                font-size: 1rem;
+            }
+            .input__btn {
+                background-color: #333;
+                color: white;
+                padding: 0 0.5rem;
+            }
+            .input__btn:hover {
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
         <div class="input">
-            <input type="text" class="input__start" placeholder="1200" />
-            <input type="text" class="input__end" placeholder="1300" />
+            <div>
+                <input
+                    type="text"
+                    class="input__start__hour"
+                    name="startHour"
+                    placeholder="11"
+                />:
+                <input
+                    type="text"
+                    class="input__start__minute"
+                    name="startMinute"
+                    placeholder="30"
+                />
+            </div>
+            <div>~</div>
+            <div>
+                <input
+                    type="text"
+                    class="input__end__hour"
+                    placeholder="13"
+                    name="endHour"
+                />:
+                <input
+                    type="text"
+                    class="input__end__minute"
+                    placeholder="30"
+                    name="endMinute"
+                />
+            </div>
+            &nbsp;&nbsp;&nbsp;
             <input type="text" class="input__title" />
             <input type="button" class="input__btn" value="저장" />
         </div>

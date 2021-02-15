@@ -11,9 +11,13 @@ const Todos = function () {
             const $div = document.createElement("div");
             $div.className = "todos__item";
             $div.innerHTML = `
-                <div>${todo.start}</div>
+                <div class="input__start">
+                    <div>${todo.startHour}</div>:<div>${todo.startMinute}</div>
+                </div>
                 <div>~</div>
-                <div>${todo.end}</div>
+                <div class="input__end">
+                    <div>${todo.endHour}</div>:<div>${todo.endMinute}</div>
+                </div>
                 <div>${todo.title}</div>
             `;
             this.$todos.appendChild($div);
