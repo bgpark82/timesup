@@ -49,11 +49,7 @@ const Input = function ({
         this.state = state;
     };
 
-    this.render = () => {
-        this.$start.innerHTML = "";
-        this.$end.innerHTML = "";
-        this.$title.innerHTML = "";
-    };
+    this.render = () => {};
 
     this.init();
 };
